@@ -1,0 +1,324 @@
+import tkinter as tk
+import json
+import random
+import tkinter.messagebox
+
+
+class MalaphorGenerator:
+    """Generate and manage malaphors from combinations of phrases.
+    
+    Handles loading phrases, generating combinations, and managing favorites.
+    """
+    
+    def __init__(self):
+        """Initialize the MalaphorGenerator with phrases from JSON file."""
+        self.proverbs = []
+        self.history = []
+        self.favorites = []
+        self.load_malaphors()
+        
+    def load_malaphors(self) -> None:
+        """Load malaphors from the JSON file."""
+        try:
+            with open("malaphors.json", "r") as file:
+                data = json.load(file)
+                self.proverbs = data["proverbs"]
+        except FileNotFoundError:
+            tkinter.messagebox.showerror(
+                "Error",
+                "malaphors.json file not found!"
+            )
+            raise
+        except json.JSONDecodeError:
+            tkinter.messagebox.showerror(
+                "Error",
+                "Invalid JSON format in malaphors.json!"
+            )
+            raise
+            
+    def generate_malaphor(self) -> dict:
+        """Generate a random malaphor by combining phrases."""
+        if not self.proverbs:
+            return {"malaphor": "Error: No phrases loaded"}
+            
+        proverb1 = random.choice(self.proverbs)
+        proverb2 = random.choice(self.proverbs)
+        
+        new_malaphor = f"{proverb1['beginning']} {proverb2['ending']}"
+        
+        result = {
+            "malaphor": new_malaphor,
+            "source1": proverb1["original"],
+            "source2": proverb2["original"]
+        }
+        
+        self.history.append(result)
+        return result
+        
+    def add_to_favorites(self, malaphor: str) -> None:
+        """Add a malaphor to favorites."""
+        if malaphor not in self.favorites:
+            self.favorites.append(malaphor)
+            
+    def save_favorites(self) -> None:
+        """Save favorite malaphors to a JSON file."""
+        try:
+            with open("favorites.json", "w") as file:
+                json.dump({"favorites": self.favorites}, file, indent=2)
+            tkinter.messagebox.showinfo(
+                "Success",
+                "Favorites saved successfully!"
+            )
+        except Exception as e:
+            tkinter.messagebox.showerror(
+                "Error",
+                f"Could not save favorites: {str(e)}"
+            )
+    
+    def add_new_proverb(self, beginning: str, ending: str) -> bool:
+        """Add a new proverb to the collection and save to file.
+        
+        Args:
+            beginning: The first part of the proverb
+            ending: The second part of the proverb
+            
+        Returns:
+            bool: True if saved successfully, False otherwise
+        """
+        if not beginning or not ending:
+            return False
+            
+        new_proverb = {
+            "beginning": beginning,
+            "ending": ending,
+            "original": f"{beginning} {ending}"
+        }
+        
+        self.proverbs.append(new_proverb)
+        
+        try:
+            with open("malaphors.json", "w") as file:
+                json.dump({"proverbs": self.proverbs}, file, indent=2)
+            return True
+        except Exception as e:
+            tkinter.messagebox.showerror(
+                "Error",
+                f"Could not save new proverb: {str(e)}"
+            )
+            return False
+
+
+class MalaphorApp:
+    """GUI application for the Malaphor Generator."""
+    
+    def __init__(self):
+        """Initialize the GUI application."""
+        self.generator = MalaphorGenerator()
+        self.root = tk.Tk()
+        self.root.title("Malaphor Generator")
+        self.setup_gui()
+        
+    def setup_gui(self):
+        """Set up the GUI components."""
+        # Configure window
+        self.root.geometry("600x500")  # Increased window size
+        self.root.configure(padx=20, pady=20)
+        
+        # Create main frame
+        main_frame = tk.Frame(self.root)
+        main_frame.pack(expand=True, fill='both')
+        
+        # Create buttons frame with two rows
+        button_frame_top = tk.Frame(main_frame)
+        button_frame_top.pack(pady=5)
+        
+        button_frame_bottom = tk.Frame(main_frame)
+        button_frame_bottom.pack(pady=5)
+        
+        # Add buttons to top row with increased width
+        add_proverb_button = tk.Button(
+            button_frame_top,
+            text="Add New Proverb",
+            command=self.show_add_proverb_dialog,
+            width=15
+        )
+        add_proverb_button.pack(side=tk.LEFT, padx=5)
+        
+        generate_button = tk.Button(
+            button_frame_top,
+            text="Generate",
+            command=self.generate_malaphor,
+            width=15
+        )
+        generate_button.pack(side=tk.LEFT, padx=5)
+        
+        copy_button = tk.Button(
+            button_frame_top,
+            text="Copy Malaphor",
+            command=self.copy_to_clipboard,
+            width=15
+        )
+        copy_button.pack(side=tk.LEFT, padx=5)
+        
+        # Add buttons to bottom row
+        favorite_button = tk.Button(
+            button_frame_bottom,
+            text="Add to Favorites",
+            command=self.add_to_favorites,
+            width=15
+        )
+        favorite_button.pack(side=tk.LEFT, padx=5)
+        
+        save_favorites_button = tk.Button(
+            button_frame_bottom,
+            text="Save Favorites",
+            command=self.generator.save_favorites,
+            width=15
+        )
+        save_favorites_button.pack(side=tk.LEFT, padx=5)
+        
+        exit_button = tk.Button(
+            button_frame_bottom,
+            text="Exit",
+            command=self.exit_program,
+            width=15
+        )
+        exit_button.pack(side=tk.LEFT, padx=5)
+        
+        # Create labels
+        self.sentence_label = tk.Label(
+            main_frame,
+            text="Click 'Generate' to create a malaphor",
+            wraplength=400,
+            height=3
+        )
+        self.sentence_label.pack(pady=20)
+        
+        # Create history display
+        history_frame = tk.LabelFrame(
+            main_frame,
+            text="History",
+            padx=10,
+            pady=10
+        )
+        history_frame.pack(fill='both', expand=True)
+        
+        self.history_text = tk.Text(history_frame, height=10, width=50)
+        self.history_text.pack(side=tk.LEFT, fill='both', expand=True)
+        
+        # Add scrollbar to history
+        scrollbar = tk.Scrollbar(history_frame)
+        scrollbar.pack(side=tk.RIGHT, fill='y')
+        
+        # Configure scrollbar
+        self.history_text.config(yscrollcommand=scrollbar.set)
+        scrollbar.config(command=self.history_text.yview)
+        
+    def show_add_proverb_dialog(self):
+        """Show dialog for adding a new proverb."""
+        dialog = tk.Toplevel(self.root)
+        dialog.title("Add New Proverb")
+        dialog.geometry("400x200")
+        dialog.transient(self.root)
+        dialog.grab_set()
+        
+        # Create and pack widgets
+        tk.Label(dialog, text="Enter the beginning of the proverb:").pack(pady=5)
+        beginning_entry = tk.Entry(dialog, width=40)
+        beginning_entry.pack(pady=5)
+        
+        tk.Label(dialog, text="Enter the ending of the proverb:").pack(pady=5)
+        ending_entry = tk.Entry(dialog, width=40)
+        ending_entry.pack(pady=5)
+        
+        def save_proverb():
+            beginning = beginning_entry.get().strip()
+            ending = ending_entry.get().strip()
+            
+            if not beginning or not ending:
+                tkinter.messagebox.showwarning(
+                    "Input Error",
+                    "Both beginning and ending must be filled out!"
+                )
+                return
+                
+            if self.generator.add_new_proverb(beginning, ending):
+                tkinter.messagebox.showinfo(
+                    "Success",
+                    "New proverb added successfully!"
+                )
+                dialog.destroy()
+            
+        button_frame = tk.Frame(dialog)
+        button_frame.pack(pady=20)
+        
+        tk.Button(
+            button_frame,
+            text="Save",
+            command=save_proverb
+        ).pack(side=tk.LEFT, padx=5)
+        
+        tk.Button(
+            button_frame,
+            text="Cancel",
+            command=dialog.destroy
+        ).pack(side=tk.LEFT, padx=5)
+        
+    def generate_malaphor(self):
+        """Generate and display a new malaphor."""
+        result = self.generator.generate_malaphor()
+        sentence = result["malaphor"]
+        self.sentence_label.config(
+            text=(f"{sentence}\n\n"
+                  f"Created from:\n"
+                  f"1. {result['source1']}\n"
+                  f"2. {result['source2']}")
+        )
+        self.update_history()
+        
+    def copy_to_clipboard(self):
+        """Copy the current malaphor to clipboard."""
+        sentence = self.sentence_label.cget("text")
+        self.root.clipboard_clear()
+        self.root.clipboard_append(sentence)
+        self.root.update()
+        tkinter.messagebox.showinfo(
+            "Copy Malaphor",
+            "The malaphor has been copied to the clipboard."
+        )
+        
+    def add_to_favorites(self):
+        """Add the current malaphor to favorites."""
+        current_malaphor = self.sentence_label.cget("text")
+        default_text = "Click 'Generate' to create a malaphor"
+        if (current_malaphor and current_malaphor != default_text):
+            self.generator.add_to_favorites(current_malaphor)
+            tkinter.messagebox.showinfo("Success", "Added to favorites!")
+            
+    def update_history(self):
+        """Update the history display with malaphors and their sources."""
+        self.history_text.delete(1.0, tk.END)
+        # Show last 10 items with their sources
+        for item in reversed(self.generator.history[-10:]):
+            self.history_text.insert(tk.END, f"Malaphor: {item['malaphor']}\n")
+            self.history_text.insert(tk.END, "From combining:\n")
+            self.history_text.insert(tk.END, f"1. {item['source1']}\n")
+            self.history_text.insert(tk.END, f"2. {item['source2']}\n\n")
+            
+    def exit_program(self):
+        """Exit the program after confirming with the user."""
+        if tkinter.messagebox.askokcancel(
+            "Exit",
+            "Do you want to exit the program?"
+        ):
+            self.root.quit()
+            
+    def run(self):
+        """Start the application."""
+        self.root.mainloop()
+
+
+if __name__ == "__main__":
+    app = MalaphorApp()
+    app.run()
+

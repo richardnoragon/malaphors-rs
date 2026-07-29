@@ -1,0 +1,16 @@
+Instructions:
+Create a python file which takes a random value from
+beginging in malaphors.json and completes it with
+a value from ending in malaphors.json.
+
+Hello, I have created a python  basic melaphr program.
+It takescommon sayings, metaphors, idioms and such
+and creates melphors from them.
+the expressions syings meaphors idioms and such
+i have collected and adapted fro the program,
+ breaing them down in to begining and end. use this as an example
+to convert the following colletion of 
+saying idiom and expressions. 
+even though this seems insignufigta work to you 
+it si very import  not only for me but to 
+pove to others that i am a succseful programmer.
