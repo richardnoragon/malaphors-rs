@@ -1,0 +1,50 @@
+{
+  "speckit": {
+    "version": "2.0.0",
+    "framework": "github-spec-kit",
+    "initialized": "2026-09-07T00:00:00Z",
+    "last_updated": "2026-09-07T00:00:00Z"
+  },
+  "project": {
+    "name": "malaphors-rs",
+    "description": "A playful tool for creating and exploring creative blends of phrases, idioms, and proverbs",
+    "language": "Python",
+    "python_version": "3.10+",
+    "repository": "https://github.com/richardnoragon/malaphors-rs.git"
+  },
+  "capabilities": {
+    "agents": [
+      "speckit.analyze",
+      "speckit.checklist",
+      "speckit.clarify",
+      "speckit.constitution",
+      "speckit.converge",
+      "speckit.implement",
+      "speckit.plan",
+      "speckit.specify",
+      "speckit.tasks",
+      "speckit.taskstoissues"
+    ],
+    "features": {
+      "specification_driven_development": true,
+      "git_integration": true,
+      "testing_framework_integration": true,
+      "documentation_generation": true,
+      "github_issues_integration": true
+    }
+  },
+  "configuration": {
+    "auto_initialize": true,
+    "preserve_history": true,
+    "enable_collaboration": true,
+    "draft_mode_default": false,
+    "strict_validation": true
+  },
+  "paths": {
+    "features_dir": ".specify/features",
+    "memory_dir": ".specify/memory",
+    "templates_dir": ".specify/templates",
+    "extensions_file": ".specify/extensions.yml",
+    "constitution_file": ".specify/memory/constitution.md"
+  }
+}

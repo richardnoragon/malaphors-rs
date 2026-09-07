@@ -1,0 +1,65 @@
+---
+# Speckit Extensions Configuration
+# This file defines hooks and extensions for the speckit framework
+
+version: "1.0"
+speckit_version: "2.0.0"  # Latest speckit framework version
+
+hooks:
+  before_specify:
+    - id: "check-branch"
+      enabled: true
+      optional: false
+      command: "speckit.git.branch"
+      description: "Verify feature branch naming convention"
+
+  before_plan:
+    - id: "validate-spec"
+      enabled: true
+      optional: false
+      command: "speckit.spec.validate"
+      description: "Validate specification completeness"
+
+  before_tasks:
+    - id: "check-plan"
+      enabled: true
+      optional: false
+      command: "speckit.plan.validate"
+      description: "Ensure planning is complete"
+
+  before_implement:
+    - id: "check-tasks"
+      enabled: true
+      optional: false
+      command: "speckit.tasks.validate"
+      description: "Verify all tasks are defined"
+      condition: "file.exists('.specify/spec.md') && file.exists('.specify/plan.md')"
+
+  after_implement:
+    - id: "run-tests"
+      enabled: true
+      optional: true
+      command: "speckit.test.run"
+      description: "Run project tests after implementation"
+
+extensions:
+  - name: "git-integration"
+    enabled: true
+    version: "1.0"
+    description: "Git workflow integration for speckit"
+  
+  - name: "testing-framework"
+    enabled: true
+    version: "1.0"
+    description: "Testing framework integration"
+  
+  - name: "documentation-generator"
+    enabled: true
+    version: "1.0"
+    description: "Auto-generate documentation from specs"
+
+preferences:
+  auto_timestamp: true
+  preserve_history: true
+  enable_collaboration: true
+  draft_mode_default: false

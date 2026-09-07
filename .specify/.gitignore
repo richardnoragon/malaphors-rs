@@ -1,0 +1,51 @@
+# Gitignore for .specify directory
+# Store specification artifacts, but ignore temporary/generated files
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+.DS_Store
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Generated files
+*.pyc
+__pycache__/
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# OS files
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Environment files (unless you want to track them)
+# .env
+# .env.local
+
+# Large files (if you use these)
+# *.pdf
+# *.docx
+
+# Local working directories
+_temp/
+_working/
+.scratch/
+
+# But DO track these important files:
+!spec.md
+!plan.md
+!tasks.md
+!constitution.md
+!extensions.yml
+!speckit.config.json
+!README.md
