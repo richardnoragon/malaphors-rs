@@ -1,3 +1,4 @@
+import json
 import unittest
 import pytest
 from unittest.mock import MagicMock, patch
@@ -6,6 +7,7 @@ import tkinter as tk
 from PyQt6 import QtWidgets
 from PyQt6.QtTest import QTest
 from malaphor_ui import MalaphorApp
+from malaphor_logic import MalaphorGenerator
 
 @pytest.mark.gui
 class TestMalaphorUI(unittest.TestCase):
@@ -169,6 +171,41 @@ class TestMalaphorUI(unittest.TestCase):
         # Verify dialogs were shown
         self.assertGreater(mock_filedialog.asksaveasfilename.call_count, 0)
         mock_filedialog.askopenfilename.assert_called_once()
+
+
+def test_history_persists_and_loads(monkeypatch, tmp_path):
+    """History entries should be saved to disk and restored on startup."""
+    monkeypatch.chdir(tmp_path)
+    malaphors = {
+        "proverbs": [
+            {"original": "A bird in the hand", "beginning": "A bird in the hand", "ending": "is worth two in the bush"},
+            {"original": "Too many cooks spoil the broth", "beginning": "Too many cooks", "ending": "spoil the broth"},
+        ]
+    }
+    (tmp_path / "malaphors.json").write_text(json.dumps(malaphors), encoding="utf-8")
+
+    generator = MalaphorGenerator()
+    result = generator.generate_malaphor()
+
+    history_file = tmp_path / "history.json"
+    assert history_file.exists()
+    saved_history = json.loads(history_file.read_text(encoding="utf-8"))
+    assert isinstance(saved_history, list)
+    assert saved_history[-1]["malaphor"] == result["malaphor"]
+    assert "timestamp" in saved_history[-1]
+
+    saved_history = [
+        {
+            "malaphor": "Persisted malaphor",
+            "source1": "Source one",
+            "source2": "Source two",
+            "timestamp": "2026-09-08T00:00:00+00:00",
+        }
+    ]
+    history_file.write_text(json.dumps(saved_history), encoding="utf-8")
+
+    reloaded = MalaphorGenerator()
+    assert reloaded.history == saved_history
 
 if __name__ == '__main__':
     print("Running MalaphorUI tests...")

@@ -5,8 +5,10 @@ Malaphor Generator is a Python desktop application for creating playful malaphor
 ## What this project includes
 
 - A Tkinter-based Python app for generating and managing malaphors
-- A phrase database stored in JSON
+- A phrase database stored in JSON; the current built-in dataset contains 253 unique proverb entries
 - Logging and settings management interfaces
+- A visual gallery for browsing generated malaphors
+- A command-line interface for generating, searching, and exporting malaphors
 - A Rust/Tauri implementation for experimentation and desktop packaging
 
 ## Features
@@ -16,12 +18,20 @@ Malaphor Generator is a Python desktop application for creating playful malaphor
 - Manage phrases, history, and favorites
 - Import and export phrase collections and logs
 - Inspect and edit JSON-based settings through a GUI
+- Switch between light and dark themes from the main window
+- Browse recent malaphors in a card-style gallery
 
 ## Requirements
 
 - Python 3.10+
 - Tkinter (included with most Python installations on Windows/macOS/Linux)
 - Optional: Rust and Cargo if you want to build the Rust/Tauri app
+
+## Versioning & Releases
+
+The canonical versioning policy for this repository lives in [VERSIONING.md](VERSIONING.md).
+That page defines the release rules, changelog discipline, rollout expectations,
+and governance review requirements.
 
 ## Installation
 
@@ -42,9 +52,11 @@ Malaphor Generator is a Python desktop application for creating playful malaphor
 ## Project structure
 
 - [main.py](main.py): entry point for the Python application
+- [malaphor_cli.py](malaphor_cli.py): command-line entrypoints for the generator
 - [malaphor_logic.py](malaphor_logic.py): generation and phrase-management logic
 - [malaphor_ui.py](malaphor_ui.py): Tkinter-based UI
 - [malaphors.json](malaphors.json): default phrase dataset
+- ui_preferences.json: generated UI theme preference file
 - [settings_manager.py](settings_manager.py): settings editor
 - [log_manager.py](log_manager.py): logging interface
 - [malaphor-rs](malaphor-rs): Rust/Tauri implementation
@@ -55,6 +67,15 @@ The project includes pytest-based tests.
 
 ```bash
 pytest
+```
+
+### CLI Examples
+
+```bash
+python main.py --generate
+python main.py --generate --count 5 --smart
+python main.py --search bird
+python main.py --export malaphors-export.json --export-format json
 ```
 
 ## Contributing

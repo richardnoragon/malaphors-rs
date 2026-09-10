@@ -3,17 +3,1779 @@
     {
       "original": "A bad penny always turns up",
       "beginning": "A bad penny",
-      "ending": "always turns up"
+      "ending": "always turns up",
+      "source": "Folk Wisdom",
+      "tags": [
+        "animal",
+        "nature"
+      ]
+    },
+    {
+      "original": "A bird in the hand is worth two in the bush",
+      "beginning": "A bird in the hand",
+      "ending": "is worth two in the bush",
+      "source": "Folk Wisdom",
+      "tags": [
+        "wisdom",
+        "nature"
+      ]
+    },
+    {
+      "original": "A chain is only as strong as its weakest link",
+      "beginning": "A chain is only as",
+      "ending": "strong as its weakest link",
+      "source": "Folk Wisdom",
+      "tags": []
     },
     {
       "original": "A friend in need is a friend indeed",
       "beginning": "A friend in need",
-      "ending": "is a friend indeed"
+      "ending": "is a friend indeed",
+      "source": "Folk Wisdom",
+      "tags": []
+    },
+    {
+      "original": "A journey of a thousand miles begins with a single step",
+      "beginning": "A journey of a thousand",
+      "ending": "miles begins with a single step",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "A little learning is a dangerous thing",
+      "beginning": "A little learning",
+      "ending": "is a dangerous thing",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "A miss is as good as a mile",
+      "beginning": "A miss is as",
+      "ending": "good as a mile",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "A penny saved is a penny earned",
+      "beginning": "A penny saved",
+      "ending": "is a penny earned",
+      "source": "Folk Wisdom",
+      "tags": []
+    },
+    {
+      "original": "A rolling stone gathers no moss",
+      "beginning": "A rolling stone",
+      "ending": "gathers no moss",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "A ship in harbor is safe but that is not what ships are for",
+      "beginning": "A ship in harbor is safe but",
+      "ending": "that is not what ships are for",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "A stitch in time saves nine",
+      "beginning": "A stitch in",
+      "ending": "time saves nine",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "A watched pot never boils",
+      "beginning": "A watched",
+      "ending": "pot never boils",
+      "source": "Unknown",
+      "tags": []
     },
     {
       "original": "Actions speak louder than words",
-      "beginning": "Actions",
-      "ending": "speak louder than words"
+      "beginning": "Actions speak",
+      "ending": "louder than words",
+      "source": "Folk Wisdom",
+      "tags": []
+    },
+    {
+      "original": "All good things must come to an end",
+      "beginning": "All good things must",
+      "ending": "come to an end",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "All roads lead to Rome",
+      "beginning": "All roads",
+      "ending": "lead to Rome",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "All that glitters is not gold",
+      "beginning": "All that glitters",
+      "ending": "is not gold",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "All work and no play makes Jack a dull boy",
+      "beginning": "All work and no play",
+      "ending": "makes Jack a dull boy",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "An apple a day keeps the doctor away",
+      "beginning": "An apple a day",
+      "ending": "keeps the doctor away",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "An eye for an eye makes the whole world blind",
+      "beginning": "An eye for an eye",
+      "ending": "makes the whole world blind",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "An ounce of prevention is worth a pound of cure",
+      "beginning": "An ounce of prevention is",
+      "ending": "worth a pound of cure",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Another day another dollar",
+      "beginning": "Another day",
+      "ending": "another dollar",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Ask no questions and hear no lies",
+      "beginning": "Ask no questions",
+      "ending": "and hear no lies",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "As you sow so shall you reap",
+      "beginning": "As you sow",
+      "ending": "so shall you reap",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Bad news travels fast",
+      "beginning": "Bad news",
+      "ending": "travels fast",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Barking dogs seldom bite",
+      "beginning": "Barking dogs",
+      "ending": "seldom bite",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Beauty is in the eye of the beholder",
+      "beginning": "Beauty is in the",
+      "ending": "eye of the beholder",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Beggars cannot be choosers",
+      "beginning": "Beggars cannot",
+      "ending": "be choosers",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Better late than never",
+      "beginning": "Better late",
+      "ending": "than never",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Better safe than sorry",
+      "beginning": "Better safe",
+      "ending": "than sorry",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Birds of a feather flock together",
+      "beginning": "Birds of a",
+      "ending": "feather flock together",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Blood is thicker than water",
+      "beginning": "Blood is",
+      "ending": "thicker than water",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Cleanliness is next to godliness",
+      "beginning": "Cleanliness is",
+      "ending": "next to godliness",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Count your blessings",
+      "beginning": "Count",
+      "ending": "your blessings",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Curiosity killed the cat",
+      "beginning": "Curiosity killed",
+      "ending": "the cat",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Cut your coat according to your cloth",
+      "beginning": "Cut your coat",
+      "ending": "according to your cloth",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Do not count your chickens before they hatch",
+      "beginning": "Do not count your",
+      "ending": "chickens before they hatch",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Do not cross the bridge before you come to it",
+      "beginning": "Do not cross the bridge",
+      "ending": "before you come to it",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Do not cry over spilled milk",
+      "beginning": "Do not cry",
+      "ending": "over spilled milk",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Do not put all your eggs in one basket",
+      "beginning": "Do not put all",
+      "ending": "your eggs in one basket",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Do not bite the hand that feeds you",
+      "beginning": "Do not bite the",
+      "ending": "hand that feeds you",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Do unto others as you would have them do unto you",
+      "beginning": "Do unto others as you",
+      "ending": "would have them do unto you",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Early to bed and early to rise makes a man healthy wealthy and wise",
+      "beginning": "Early to bed and early to rise",
+      "ending": "makes a man healthy wealthy and wise",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Easier said than done",
+      "beginning": "Easier said",
+      "ending": "than done",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Empty vessels make the most noise",
+      "beginning": "Empty vessels make",
+      "ending": "the most noise",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Every cloud has a silver lining",
+      "beginning": "Every cloud has",
+      "ending": "a silver lining",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Every dog has its day",
+      "beginning": "Every dog",
+      "ending": "has its day",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Every little helps",
+      "beginning": "Every",
+      "ending": "little helps",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Every man for himself",
+      "beginning": "Every man",
+      "ending": "for himself",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Every picture tells a story",
+      "beginning": "Every picture",
+      "ending": "tells a story",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Experience is the best teacher",
+      "beginning": "Experience is",
+      "ending": "the best teacher",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Facts are stubborn things",
+      "beginning": "Facts are",
+      "ending": "stubborn things",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Failing to plan is planning to fail",
+      "beginning": "Failing to plan",
+      "ending": "is planning to fail",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "First things first",
+      "beginning": "First",
+      "ending": "things first",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "First come first served",
+      "beginning": "First come",
+      "ending": "first served",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Forewarned is forearmed",
+      "beginning": "Forewarned",
+      "ending": "is forearmed",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Fortune favors the bold",
+      "beginning": "Fortune favors",
+      "ending": "the bold",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Fortune favors the brave",
+      "beginning": "Fortune favors",
+      "ending": "the brave",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "From little acorns great oaks grow",
+      "beginning": "From little acorns",
+      "ending": "great oaks grow",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Give a man a fish and you feed him for a day",
+      "beginning": "Give a man a fish and",
+      "ending": "you feed him for a day",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Good fences make good neighbors",
+      "beginning": "Good fences",
+      "ending": "make good neighbors",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Good things come to those who wait",
+      "beginning": "Good things come",
+      "ending": "to those who wait",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Great minds think alike",
+      "beginning": "Great minds",
+      "ending": "think alike",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Half a loaf is better than none",
+      "beginning": "Half a loaf",
+      "ending": "is better than none",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Happiness is a choice",
+      "beginning": "Happiness is",
+      "ending": "a choice",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Hard work pays off",
+      "beginning": "Hard work",
+      "ending": "pays off",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Haste makes waste",
+      "beginning": "Haste",
+      "ending": "makes waste",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Honesty is the best policy",
+      "beginning": "Honesty is",
+      "ending": "the best policy",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "If it aint broke do not fix it",
+      "beginning": "If it aint broke",
+      "ending": "do not fix it",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "If the shoe fits wear it",
+      "beginning": "If the shoe",
+      "ending": "fits wear it",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "If you cannot beat them join them",
+      "beginning": "If you cannot",
+      "ending": "beat them join them",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "If you want to be happy for a year inherit a fortune if you want to be happy for a lifetime help somebody",
+      "beginning": "If you want to be happy for a year inherit a",
+      "ending": "fortune if you want to be happy for a lifetime help somebody",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "In for a penny in for a pound",
+      "beginning": "In for a penny",
+      "ending": "in for a pound",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "It is no use crying over spilt milk",
+      "beginning": "It is no use",
+      "ending": "crying over spilt milk",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "It takes a village to raise a child",
+      "beginning": "It takes a village",
+      "ending": "to raise a child",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "It takes two to tango",
+      "beginning": "It takes",
+      "ending": "two to tango",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Knowledge is power",
+      "beginning": "Knowledge",
+      "ending": "is power",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Laughter is the best medicine",
+      "beginning": "Laughter is",
+      "ending": "the best medicine",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Let sleeping dogs lie",
+      "beginning": "Let sleeping",
+      "ending": "dogs lie",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Look before you leap",
+      "beginning": "Look before",
+      "ending": "you leap",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Many hands make light work",
+      "beginning": "Many hands",
+      "ending": "make light work",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Many a little makes a mickle",
+      "beginning": "Many a little",
+      "ending": "makes a mickle",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Money does not grow on trees",
+      "beginning": "Money does not",
+      "ending": "grow on trees",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Necessity is the mother of invention",
+      "beginning": "Necessity is the",
+      "ending": "mother of invention",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Necessity knows no law",
+      "beginning": "Necessity knows",
+      "ending": "no law",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Needs must when the devil drives",
+      "beginning": "Needs must when",
+      "ending": "the devil drives",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "No news is good news",
+      "beginning": "No news",
+      "ending": "is good news",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "No pain no gain",
+      "beginning": "No pain",
+      "ending": "no gain",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "No rest for the wicked",
+      "beginning": "No rest",
+      "ending": "for the wicked",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Nothing ventured nothing gained",
+      "beginning": "Nothing ventured",
+      "ending": "nothing gained",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "One bad apple spoils the barrel",
+      "beginning": "One bad apple",
+      "ending": "spoils the barrel",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "One man s trash is another man s treasure",
+      "beginning": "One man s trash",
+      "ending": "is another man s treasure",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "One swallow does not make a summer",
+      "beginning": "One swallow does",
+      "ending": "not make a summer",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Out of the frying pan into the fire",
+      "beginning": "Out of the frying",
+      "ending": "pan into the fire",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Patience is a virtue",
+      "beginning": "Patience is",
+      "ending": "a virtue",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Penny wise pound foolish",
+      "beginning": "Penny wise",
+      "ending": "pound foolish",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Practice makes perfect",
+      "beginning": "Practice",
+      "ending": "makes perfect",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Pride goes before a fall",
+      "beginning": "Pride goes",
+      "ending": "before a fall",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Prevention is better than cure",
+      "beginning": "Prevention is",
+      "ending": "better than cure",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Rome was not built in a day",
+      "beginning": "Rome was not",
+      "ending": "built in a day",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Share and share alike",
+      "beginning": "Share and",
+      "ending": "share alike",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Silence is golden",
+      "beginning": "Silence",
+      "ending": "is golden",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Slow and steady wins the race",
+      "beginning": "Slow and steady",
+      "ending": "wins the race",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Small things amuse small minds",
+      "beginning": "Small things",
+      "ending": "amuse small minds",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Speech is silver silence is gold",
+      "beginning": "Speech is silver",
+      "ending": "silence is gold",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Strike while the iron is hot",
+      "beginning": "Strike while the",
+      "ending": "iron is hot",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Success breeds success",
+      "beginning": "Success",
+      "ending": "breeds success",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Take care of the pennies and the pounds will take care of themselves",
+      "beginning": "Take care of the pennies and",
+      "ending": "the pounds will take care of themselves",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The best things in life are free",
+      "beginning": "The best things",
+      "ending": "in life are free",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The bigger they are the harder they fall",
+      "beginning": "The bigger they are",
+      "ending": "the harder they fall",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The customer is always right",
+      "beginning": "The customer",
+      "ending": "is always right",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The devil is in the details",
+      "beginning": "The devil is",
+      "ending": "in the details",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The early bird catches the worm",
+      "beginning": "The early bird",
+      "ending": "catches the worm",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The grass is always greener on the other side",
+      "beginning": "The grass is always",
+      "ending": "greener on the other side",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The pen is mightier than the sword",
+      "beginning": "The pen is",
+      "ending": "mightier than the sword",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The squeaky wheel gets the grease",
+      "beginning": "The squeaky wheel",
+      "ending": "gets the grease",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "There is no place like home",
+      "beginning": "There is no",
+      "ending": "place like home",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "There is no smoke without fire",
+      "beginning": "There is no",
+      "ending": "smoke without fire",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The road to hell is paved with good intentions",
+      "beginning": "The road to hell",
+      "ending": "is paved with good intentions",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The truth hurts",
+      "beginning": "The",
+      "ending": "truth hurts",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "There are no gains without pains",
+      "beginning": "There are no",
+      "ending": "gains without pains",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "There is strength in numbers",
+      "beginning": "There is",
+      "ending": "strength in numbers",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Time is money",
+      "beginning": "Time",
+      "ending": "is money",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "To err is human to forgive is divine",
+      "beginning": "To err is human",
+      "ending": "to forgive is divine",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Too many cooks spoil the broth",
+      "beginning": "Too many cooks",
+      "ending": "spoil the broth",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Two wrongs do not make a right",
+      "beginning": "Two wrongs do",
+      "ending": "not make a right",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Two heads are better than one",
+      "beginning": "Two heads are",
+      "ending": "better than one",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "United we stand divided we fall",
+      "beginning": "United we stand",
+      "ending": "divided we fall",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Variety is the spice of life",
+      "beginning": "Variety is the",
+      "ending": "spice of life",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Waste not want not",
+      "beginning": "Waste not",
+      "ending": "want not",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "We learn by doing",
+      "beginning": "We learn",
+      "ending": "by doing",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "What goes around comes around",
+      "beginning": "What goes",
+      "ending": "around comes around",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "What you sow is what you reap",
+      "beginning": "What you sow",
+      "ending": "is what you reap",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "When in Rome do as the Romans do",
+      "beginning": "When in Rome do",
+      "ending": "as the Romans do",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "When the going gets tough the tough get going",
+      "beginning": "When the going gets",
+      "ending": "tough the tough get going",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Where there is smoke there is fire",
+      "beginning": "Where there is",
+      "ending": "smoke there is fire",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Where there is a will there is a way",
+      "beginning": "Where there is a",
+      "ending": "will there is a way",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "You can lead a horse to water but you cannot make it drink",
+      "beginning": "You can lead a horse to",
+      "ending": "water but you cannot make it drink",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "You cannot have your cake and eat it too",
+      "beginning": "You cannot have your",
+      "ending": "cake and eat it too",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "You cannot make an omelet without breaking eggs",
+      "beginning": "You cannot make an",
+      "ending": "omelet without breaking eggs",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "You get what you pay for",
+      "beginning": "You get what",
+      "ending": "you pay for",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "You reap what you sow",
+      "beginning": "You reap",
+      "ending": "what you sow",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "A friend is easier lost than found",
+      "beginning": "A friend is",
+      "ending": "easier lost than found",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "A goal without a plan is just a wish",
+      "beginning": "A goal without a",
+      "ending": "plan is just a wish",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "A lie can travel halfway around the world while the truth is putting on its shoes",
+      "beginning": "A lie can travel halfway around the world",
+      "ending": "while the truth is putting on its shoes",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "A man is known by the company he keeps",
+      "beginning": "A man is known",
+      "ending": "by the company he keeps",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "A wise man changes his mind a fool never will",
+      "beginning": "A wise man changes his",
+      "ending": "mind a fool never will",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "A word to the wise is sufficient",
+      "beginning": "A word to",
+      "ending": "the wise is sufficient",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "After the storm comes the calm",
+      "beginning": "After the storm",
+      "ending": "comes the calm",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "After a storm comes a rainbow",
+      "beginning": "After a storm",
+      "ending": "comes a rainbow",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "All is fair in love and war",
+      "beginning": "All is fair",
+      "ending": "in love and war",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "All that is gold does not glitter",
+      "beginning": "All that is",
+      "ending": "gold does not glitter",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Anything worth doing is worth doing well",
+      "beginning": "Anything worth doing",
+      "ending": "is worth doing well",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Ask and you shall receive",
+      "beginning": "Ask and",
+      "ending": "you shall receive",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Be careful what you wish for",
+      "beginning": "Be careful what",
+      "ending": "you wish for",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Before you judge someone walk a mile in their shoes",
+      "beginning": "Before you judge someone walk",
+      "ending": "a mile in their shoes",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Beware of Greeks bearing gifts",
+      "beginning": "Beware of",
+      "ending": "Greeks bearing gifts",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Big fish eat little fish",
+      "beginning": "Big fish",
+      "ending": "eat little fish",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Brevity is the soul of wit",
+      "beginning": "Brevity is the",
+      "ending": "soul of wit",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Business before pleasure",
+      "beginning": "Business",
+      "ending": "before pleasure",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Charity begins at home",
+      "beginning": "Charity begins",
+      "ending": "at home",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Children should be seen and not heard",
+      "beginning": "Children should be",
+      "ending": "seen and not heard",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Cold hands warm heart",
+      "beginning": "Cold hands",
+      "ending": "warm heart",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Constant dripping wears away the stone",
+      "beginning": "Constant dripping wears",
+      "ending": "away the stone",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Desperate times call for desperate measures",
+      "beginning": "Desperate times call",
+      "ending": "for desperate measures",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Different strokes for different folks",
+      "beginning": "Different strokes",
+      "ending": "for different folks",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Do as you would be done by",
+      "beginning": "Do as you",
+      "ending": "would be done by",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Do not judge a book by its cover",
+      "beginning": "Do not judge a",
+      "ending": "book by its cover",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Do not put off until tomorrow what you can do today",
+      "beginning": "Do not put off until",
+      "ending": "tomorrow what you can do today",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Dont look a gift horse in the mouth",
+      "beginning": "Dont look a gift",
+      "ending": "horse in the mouth",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Every rose has its thorn",
+      "beginning": "Every rose",
+      "ending": "has its thorn",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Every action has a reaction",
+      "beginning": "Every action",
+      "ending": "has a reaction",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Familiarity breeds contempt",
+      "beginning": "Familiarity",
+      "ending": "breeds contempt",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Faults are thick where love is thin",
+      "beginning": "Faults are thick",
+      "ending": "where love is thin",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Gather ye rosebuds while ye may",
+      "beginning": "Gather ye rosebuds",
+      "ending": "while ye may",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Get the ball rolling",
+      "beginning": "Get the",
+      "ending": "ball rolling",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Give him an inch and he will take a mile",
+      "beginning": "Give him an inch and",
+      "ending": "he will take a mile",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Good judgment comes from experience",
+      "beginning": "Good judgment",
+      "ending": "comes from experience",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "He who laughs last laughs loudest",
+      "beginning": "He who laughs",
+      "ending": "last laughs loudest",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "He who pays the piper calls the tune",
+      "beginning": "He who pays the",
+      "ending": "piper calls the tune",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "He who sleeps catches no fish",
+      "beginning": "He who sleeps",
+      "ending": "catches no fish",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "History repeats itself",
+      "beginning": "History",
+      "ending": "repeats itself",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "If at first you do not succeed try try again",
+      "beginning": "If at first you do",
+      "ending": "not succeed try try again",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "If wishes were horses beggars would ride",
+      "beginning": "If wishes were",
+      "ending": "horses beggars would ride",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "In the midst of life we are in death",
+      "beginning": "In the midst of",
+      "ending": "life we are in death",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "It never rains but it pours",
+      "beginning": "It never rains",
+      "ending": "but it pours",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "It takes all sorts to make a world",
+      "beginning": "It takes all sorts",
+      "ending": "to make a world",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Keep your friends close and your enemies closer",
+      "beginning": "Keep your friends close",
+      "ending": "and your enemies closer",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Last but not least",
+      "beginning": "Last but",
+      "ending": "not least",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Less is more",
+      "beginning": "Less",
+      "ending": "is more",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Life is what you make it",
+      "beginning": "Life is what",
+      "ending": "you make it",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Little and often fills the purse",
+      "beginning": "Little and often",
+      "ending": "fills the purse",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Little strokes fell great oaks",
+      "beginning": "Little strokes",
+      "ending": "fell great oaks",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Make hay while the sun shines",
+      "beginning": "Make hay while",
+      "ending": "the sun shines",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Marry in haste repent at leisure",
+      "beginning": "Marry in haste",
+      "ending": "repent at leisure",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Might is right",
+      "beginning": "Might",
+      "ending": "is right",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Never put off for tomorrow what you can do today",
+      "beginning": "Never put off for tomorrow",
+      "ending": "what you can do today",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "No man is a failure who has friends",
+      "beginning": "No man is a",
+      "ending": "failure who has friends",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "No one can serve two masters",
+      "beginning": "No one can",
+      "ending": "serve two masters",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Old habits die hard",
+      "beginning": "Old habits",
+      "ending": "die hard",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "One hand washes the other",
+      "beginning": "One hand",
+      "ending": "washes the other",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "One step at a time",
+      "beginning": "One step",
+      "ending": "at a time",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Opportunity knocks but once",
+      "beginning": "Opportunity knocks",
+      "ending": "but once",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Out of sight out of mind",
+      "beginning": "Out of sight",
+      "ending": "out of mind",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "People who live in glass houses should not throw stones",
+      "beginning": "People who live in glass",
+      "ending": "houses should not throw stones",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Pleasure before business makes a dull boy",
+      "beginning": "Pleasure before business",
+      "ending": "makes a dull boy",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Power corrupts",
+      "beginning": "Power",
+      "ending": "corrupts",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Proper preparation prevents poor performance",
+      "beginning": "Proper preparation",
+      "ending": "prevents poor performance",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Readiness is all",
+      "beginning": "Readiness",
+      "ending": "is all",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Revenge is sweet",
+      "beginning": "Revenge",
+      "ending": "is sweet",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Seeing is believing",
+      "beginning": "Seeing",
+      "ending": "is believing",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The best way to predict the future is to create it",
+      "beginning": "The best way to predict",
+      "ending": "the future is to create it",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The first step is the hardest",
+      "beginning": "The first step",
+      "ending": "is the hardest",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The grass is not always greener",
+      "beginning": "The grass is",
+      "ending": "not always greener",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The longer the road the more we know",
+      "beginning": "The longer the road",
+      "ending": "the more we know",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The more you know the more you know you do not know",
+      "beginning": "The more you know the more",
+      "ending": "you know you do not know",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The only thing we have to fear is fear itself",
+      "beginning": "The only thing we have",
+      "ending": "to fear is fear itself",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The past is a foreign country",
+      "beginning": "The past is",
+      "ending": "a foreign country",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The road less traveled is often the best",
+      "beginning": "The road less traveled",
+      "ending": "is often the best",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The way to a mans heart is through his stomach",
+      "beginning": "The way to a mans",
+      "ending": "heart is through his stomach",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Time heals all wounds",
+      "beginning": "Time heals",
+      "ending": "all wounds",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "To each his own",
+      "beginning": "To each",
+      "ending": "his own",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Truth is stranger than fiction",
+      "beginning": "Truth is",
+      "ending": "stranger than fiction",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "We are what we repeatedly do",
+      "beginning": "We are what",
+      "ending": "we repeatedly do",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Well begun is half done",
+      "beginning": "Well begun",
+      "ending": "is half done",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "When the cat is away the mice will play",
+      "beginning": "When the cat is",
+      "ending": "away the mice will play",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "You miss 100 percent of the shots you never take",
+      "beginning": "You miss 100 percent of",
+      "ending": "the shots you never take",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "You cannot teach an old dog new tricks",
+      "beginning": "You cannot teach an",
+      "ending": "old dog new tricks",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Youth is wasted on the young",
+      "beginning": "Youth is wasted",
+      "ending": "on the young",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "There is no such thing as a free lunch",
+      "beginning": "There is no such",
+      "ending": "thing as a free lunch",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "A little knowledge is a dangerous thing",
+      "beginning": "A little knowledge",
+      "ending": "is a dangerous thing",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Absence makes the heart grow fonder",
+      "beginning": "Absence makes the",
+      "ending": "heart grow fonder",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "After the rain comes the sunshine",
+      "beginning": "After the rain",
+      "ending": "comes the sunshine",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "All things are difficult before they are easy",
+      "beginning": "All things are difficult",
+      "ending": "before they are easy",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Beauty without virtue is a flower without fragrance",
+      "beginning": "Beauty without virtue is",
+      "ending": "a flower without fragrance",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "By failing to prepare you are preparing to fail",
+      "beginning": "By failing to prepare",
+      "ending": "you are preparing to fail",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Cats have nine lives",
+      "beginning": "Cats have",
+      "ending": "nine lives",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Courage is resistance to fear",
+      "beginning": "Courage is",
+      "ending": "resistance to fear",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Do not let the perfect be the enemy of the good",
+      "beginning": "Do not let the perfect",
+      "ending": "be the enemy of the good",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Dreams are only dreams until you act",
+      "beginning": "Dreams are only",
+      "ending": "dreams until you act",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Even the longest journey starts with one step",
+      "beginning": "Even the longest journey",
+      "ending": "starts with one step",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "He who can does he who cannot teaches",
+      "beginning": "He who can does",
+      "ending": "he who cannot teaches",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Justice delayed is justice denied",
+      "beginning": "Justice delayed",
+      "ending": "is justice denied",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Knowledge without action is useless",
+      "beginning": "Knowledge without",
+      "ending": "action is useless",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Life is a journey not a destination",
+      "beginning": "Life is a",
+      "ending": "journey not a destination",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Practice what you preach",
+      "beginning": "Practice what",
+      "ending": "you preach",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "The tree that bears the best fruit is the one that has been pruned",
+      "beginning": "The tree that bears the best fruit",
+      "ending": "is the one that has been pruned",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment",
+      "beginning": "To be yourself in a world that is constantly",
+      "ending": "trying to make you something else is the greatest accomplishment",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "We have nothing to fear but fear itself",
+      "beginning": "We have nothing to",
+      "ending": "fear but fear itself",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "What matters most is how well you finish",
+      "beginning": "What matters most is",
+      "ending": "how well you finish",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "You can only do so much",
+      "beginning": "You can only",
+      "ending": "do so much",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Life is not a rehearsal",
+      "beginning": "Life is",
+      "ending": "not a rehearsal",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "Knowledge is a treasure but practice is the key to it",
+      "beginning": "Knowledge is a treasure but",
+      "ending": "practice is the key to it",
+      "source": "Unknown",
+      "tags": []
+    },
+    {
+      "original": "No good deed goes unpunished",
+      "beginning": "No good",
+      "ending": "deed goes unpunished",
+      "source": "Unknown",
+      "tags": []
     }
   ]
 }

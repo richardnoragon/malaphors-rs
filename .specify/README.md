@@ -70,6 +70,12 @@ Tracks:
 - Enabled capabilities
 - Configuration preferences
 
+### Versioning Discipline
+
+The canonical project policy lives in [../VERSIONING.md](../VERSIONING.md).
+Use that page for release rules, changelog discipline, rollout guidance, and
+review expectations.
+
 ## Features Workflow
 
 When starting a new feature:
@@ -106,7 +112,7 @@ See `memory/constitution.md` for complete details.
 
 **Current Version:** 2.0.0  
 **Framework:** github-spec-kit  
-**Last Updated:** 2026-09-07
+**Last Updated:** 2026-09-08
 
 For updates and documentation, visit: https://github.com/github/github-spec-kit
 
@@ -139,6 +145,8 @@ For updates and documentation, visit: https://github.com/github/github-spec-kit
 6. **Review early** - Get feedback at each checkpoint
 7. **Track progress** - Use GitHub issues for visibility
 8. **Reflect on constitution** - Ensure alignment with principles
+9. **Version releases consistently** - Use semantic versioning and update the
+    changelog for user-facing changes
 
 ## Support
 

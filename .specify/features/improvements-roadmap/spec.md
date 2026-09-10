@@ -1,0 +1,66 @@
+# Feature Specification: Comprehensive Improvements & Features Roadmap
+
+**Feature ID:** improvements-roadmap  
+**Version:** 1.0.0  
+**Date:** 2026-09-07  
+**Status:** Ready for Planning
+
+## Notes
+- Versioning policy now lives in [../../../VERSIONING.md](../../../VERSIONING.md).
+
+## Overview
+
+This feature organizes and tracks 37 identified improvements and new features across 6 categories:
+1. UI/UX Enhancements (10 items)
+2. Generation & Logic Features (8 items)
+3. New Capabilities (8 items)
+4. Data & Quality (4 items)
+5. Testing & Reliability (4 items)
+6. Performance & Optimization (3 items)
+
+## Purpose
+
+Create a prioritized, tracked set of GitHub issues to guide development efforts over the next quarter. Enable specification-driven feature delivery with clear impact/effort analysis for each item.
+
+## Acceptance Criteria
+
+- ✅ All 37 items converted to GitHub issues with consistent labeling
+- ✅ Issues tagged by category (ui-ux, feature, data, testing, performance)
+- ✅ Issues tagged by impact (high, medium, low)
+- ✅ Issues tagged by estimated time (quick-win, medium, complex)
+- ✅ Issues assigned to priority phases (Phase 1-4)
+- ✅ Issues linked to roadmap milestones
+- ✅ Each issue includes implementation details and acceptance criteria
+- ✅ Dependency ordering respected (e.g., Phase 1 before Phase 2)
+
+## Success Metrics
+
+- All issues discoverable and filterable by label
+- Teams can view "Phase 1" items as immediate priorities
+- Clear "Quick Wins" for opportunistic implementation
+- High-impact items clearly distinguished
+- Each issue actionable without external context
+
+## Scope
+
+**In Scope:**
+- All 37 improvement/feature suggestions
+- Labeling and categorization
+- Phased roadmap (4 phases)
+- Acceptance criteria per issue
+- Time and impact estimates
+
+**Out of Scope:**
+- Implementation of features
+- Assigning to team members (can be done after creation)
+- Creating dependencies/blockers between issues (can be added later)
+
+## Related Documents
+
+- Improvement Analysis: 37 suggestions with impact/time breakdown
+- Project Constitution: Guides quality standards for all work
+- Test Coverage Standards: Define testing requirements
+
+## Open Questions
+
+None - specification derived from comprehensive codebase analysis and recommendations.
