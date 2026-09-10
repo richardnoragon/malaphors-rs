@@ -15,6 +15,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--generate", action="store_true", help="Generate malaphors and print them")
     parser.add_argument("--count", type=int, default=1, help="Number of malaphors to generate")
     parser.add_argument("--category", help="Optional tag/category filter for generation")
+    parser.add_argument("--language", help="Generate using phrases from a specific language code, such as en or es")
     parser.add_argument("--smart", action="store_true", help="Use weighted generation when available")
     parser.add_argument("--search", help="Search the phrase database")
     parser.add_argument("--import-file", dest="import_file", help="Import malaphors from a JSON file")
@@ -88,14 +89,17 @@ def main(argv: List[str] | None = None) -> int:
         count = max(1, args.count)
         if args.category:
             for _ in range(count):
-                results.append(generator.generate_with_category(args.category))
+                if args.language:
+                    results.append(generator.generate_malaphor(language=args.language))
+                else:
+                    results.append(generator.generate_with_category(args.category))
         elif args.smart:
             for _ in range(count):
                 results.append(generator.generate_weighted_random(smart_mode=True))
         elif count > 1:
-            results = generator.generate_multiple(count=count)
+            results = generator.generate_multiple(count=count, language=args.language)
         else:
-            results = [generator.generate_malaphor()]
+            results = [generator.generate_malaphor(language=args.language)]
         _print_generated(results, args.output_format)
         return 0
 

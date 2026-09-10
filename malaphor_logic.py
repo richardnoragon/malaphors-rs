@@ -4,6 +4,8 @@ import tkinter.messagebox
 import re
 import difflib
 import threading
+import time
+import statistics
 from datetime import datetime, timezone
 from functools import lru_cache
 from pathlib import Path
@@ -257,6 +259,9 @@ class MalaphorGenerator:
                     "source2": entry.get("source2", ""),
                     "timestamp": entry.get("timestamp") or datetime.now(timezone.utc).isoformat(),
                 }
+                language = entry.get("language")
+                if language is not None:
+                    normalized_entry["language"] = str(language).lower()
                 if normalized_entry["malaphor"] and normalized_entry["source1"] and normalized_entry["source2"]:
                     self.history.append(normalized_entry)
 
@@ -395,6 +400,7 @@ class MalaphorGenerator:
         cancel_event: Optional[Any] = None,
         category: Optional[str] = None,
         template_name: Optional[str] = None,
+        language: Optional[str] = None,
     ) -> List[Dict[str, str]]:
         """Generate a batch of malaphors until the request count is reached or cancellation is requested."""
         results: List[Dict[str, str]] = []
@@ -406,11 +412,11 @@ class MalaphorGenerator:
                 break
             if template_name:
                 try:
-                    result = self.generate_from_template(template_name, category=category)
+                    result = self.generate_from_template(template_name, category=category, language=language)
                 except ValueError:
-                    result = self.generate_malaphor()
+                    result = self.generate_malaphor(language=language)
             else:
-                result = self.generate_malaphor()
+                result = self.generate_malaphor(language=language)
             results.append(result)
         return results
 
@@ -420,13 +426,14 @@ class MalaphorGenerator:
         cancel_event: Optional[Any] = None,
         category: Optional[str] = None,
         template_name: Optional[str] = None,
+        language: Optional[str] = None,
     ) -> List[Dict[str, str]]:
         """Async wrapper for batch generation that exits early if a cancellation signal is set."""
         if cancel_event is not None and cancel_event.is_set():
             return []
 
         await asyncio.sleep(0)
-        return self.generate_batch(count=count, cancel_event=cancel_event, category=category, template_name=template_name)
+        return self.generate_batch(count=count, cancel_event=cancel_event, category=category, template_name=template_name, language=language)
 
     def cancel_generation(self, cancel_event: Optional[Any] = None) -> bool:
         """Set a cancellation event if one is supplied."""
@@ -502,11 +509,18 @@ class MalaphorGenerator:
         try:
             lines = []
             for item in self.history:
+                if not isinstance(item, dict):
+                    continue
+                malaphor = item.get("malaphor") or ""
+                source1 = item.get("source1") or ""
+                source2 = item.get("source2") or ""
+                if not malaphor or not source1 or not source2:
+                    continue
                 lines.extend([
-                    f"Malaphor: {item['malaphor']}",
-                    f"Created from:",
-                    f"1. {item['source1']}",
-                    f"2. {item['source2']}\n"
+                    f"Malaphor: {malaphor}",
+                    "Created from:",
+                    f"1. {source1}",
+                    f"2. {source2}\n"
                 ])
             text = '\n'.join(lines)
             await asyncio.get_event_loop().run_in_executor(
@@ -647,8 +661,31 @@ class MalaphorGenerator:
                 ]
                 if any(query_lower in value.lower() for value in haystacks if isinstance(value, str)):
                     matches.append(proverb)
-        self.search.cache_clear()
         return matches
+
+    def benchmark_search_latency(self, query: str, iterations: int = 25) -> Dict[str, Any]:
+        """Benchmark repeated search latency and summarize the timing statistics."""
+        iterations = max(1, int(iterations))
+        query = (query or "").strip()
+        self.search.cache_clear()
+
+        durations: List[float] = []
+        result_count = 0
+        for _ in range(iterations):
+            start = time.perf_counter()
+            matches = self.search(query)
+            end = time.perf_counter()
+            durations.append(end - start)
+            result_count = len(matches)
+
+        return {
+            "query": query,
+            "iterations": iterations,
+            "average_seconds": statistics.fmean(durations) if durations else 0.0,
+            "min_seconds": min(durations) if durations else 0.0,
+            "max_seconds": max(durations) if durations else 0.0,
+            "results_count": result_count,
+        }
 
     @lru_cache(maxsize=32)
     def search_history(self, query: str) -> List[Tuple[int, Dict[str, str]]]:
@@ -737,9 +774,17 @@ class MalaphorGenerator:
         self.recent_searches.clear()
 
     # FEAT-2: Generate Multiple Suggestions Without Duplicates
-    def generate_multiple(self, count: int = 5, exclude_pairs: Optional[Set[Tuple[int, int]]] = None) -> List[Dict[str, str]]:
+    def generate_multiple(self, count: int = 5, exclude_pairs: Optional[Set[Tuple[int, int]]] = None, language: Optional[str] = None) -> List[Dict[str, str]]:
         """Generate N unique malaphors. Returns list of malaphor dicts."""
-        if len(self.proverbs) < 2:
+        candidate_proverbs = list(self.proverbs)
+        if language:
+            language_key = str(language).lower()
+            candidate_proverbs = [
+                proverb for proverb in candidate_proverbs
+                if str(proverb.get("language", "en")).lower() == language_key
+            ]
+
+        if len(candidate_proverbs) < 2:
             raise ValueError("Not enough proverbs to generate malaphors")
 
         if exclude_pairs is None:
@@ -750,14 +795,14 @@ class MalaphorGenerator:
         max_attempts = count * 10  # Prevent infinite loops
 
         while len(suggestions) < count and attempts < max_attempts:
-            idx1 = random.randint(0, len(self.proverbs) - 1)
-            idx2 = random.randint(0, len(self.proverbs) - 1)
+            idx1 = random.randint(0, len(candidate_proverbs) - 1)
+            idx2 = random.randint(0, len(candidate_proverbs) - 1)
 
             # Avoid same phrase and duplicates
             if idx1 != idx2 and (idx1, idx2) not in exclude_pairs:
                 # Check if this combination would produce a unique malaphor
-                proverb1 = self.proverbs[idx1]
-                proverb2 = self.proverbs[idx2]
+                proverb1 = candidate_proverbs[idx1]
+                proverb2 = candidate_proverbs[idx2]
                 new_malaphor = f"{proverb1['beginning']} {proverb2['ending']}"
 
                 # Check if we already have this one
@@ -766,7 +811,8 @@ class MalaphorGenerator:
                         "malaphor": new_malaphor,
                         "source1": proverb1["original"],
                         "source2": proverb2["original"],
-                        "timestamp": datetime.now(timezone.utc).isoformat()
+                        "timestamp": datetime.now(timezone.utc).isoformat(),
+                        "language": str(proverb1.get("language", language or "en")).lower(),
                     }
                     suggestions.append(result)
                     exclude_pairs.add((idx1, idx2))
@@ -1821,6 +1867,7 @@ class MalaphorGenerator:
         category: Optional[str] = None,
         source1_index: Optional[int] = None,
         source2_index: Optional[int] = None,
+        language: Optional[str] = None,
     ) -> Dict[str, str]:
         """Generate a malaphor using a named template."""
         template = self.get_generation_template(template_name)
@@ -1830,16 +1877,21 @@ class MalaphorGenerator:
         if len(self.proverbs) < 2:
             raise ValueError("Not enough proverbs to generate a malaphor")
 
+        filtered_indices = list(range(len(self.proverbs)))
+        if language:
+            language_key = str(language).lower()
+            filtered_indices = [
+                i for i, proverb in enumerate(self.proverbs)
+                if str(proverb.get("language", "en")).lower() == language_key
+            ]
         if category:
             category_lower = category.lower()
             filtered_indices = [
-                i for i, proverb in enumerate(self.proverbs)
-                if category_lower in [tag.lower() for tag in proverb.get("tags", [])]
+                i for i in filtered_indices
+                if category_lower in [tag.lower() for tag in self.proverbs[i].get("tags", [])]
             ]
-            if len(filtered_indices) < 2:
-                raise ValueError(f"Not enough phrases with tag '{category}' to generate malaphor")
-        else:
-            filtered_indices = list(range(len(self.proverbs)))
+        if len(filtered_indices) < 2:
+            raise ValueError(f"Not enough matching phrases to generate malaphor")
 
         left_index = source1_index if source1_index in filtered_indices else random.choice(filtered_indices)
         right_index = source2_index if source2_index in filtered_indices else random.choice(filtered_indices)

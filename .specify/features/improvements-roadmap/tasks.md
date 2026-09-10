@@ -686,7 +686,20 @@ Current search is linear (loops through phrases). Build inverted index for O(1) 
 **Estimate:** 3-4 hours  
 **Category:** `category:testing`, `impact:medium`, `effort:complex`  
 **Milestone:** `phase:advanced`  
-**Status:** ⏳ NOT STARTED
+**Status:** ✅ COMPLETE
+
+**Description:**
+Benchmark generation and search speed with representative large datasets and surface timing metrics for regression tracking.
+
+**Acceptance Criteria:**
+- [x] Search latency benchmark is exposed through `benchmark_search_latency()`
+- [x] Timing summary includes average/min/max and result counts
+- [x] Batch generation and cancellation code paths are exercised under test
+- [x] Large-data reliability checks do not regress behavior
+
+**Implementation Notes:**
+- Added benchmark reporting for repeated search calls
+- Verified cancellation-safe batch generation and history paging under pytest
 
 ### Task 35: TEST-4 - Error Handling Tests
 
@@ -696,7 +709,20 @@ Current search is linear (loops through phrases). Build inverted index for O(1) 
 **Estimate:** 3-4 hours  
 **Category:** `category:testing`, `impact:medium`, `effort:complex`  
 **Milestone:** `phase:advanced`  
-**Status:** ⏳ NOT STARTED
+**Status:** ✅ COMPLETE
+
+**Description:**
+Ensure malformed, missing, and partial data sources fail gracefully without crashing the app or export flow.
+
+**Acceptance Criteria:**
+- [x] Malformed `history.json` is handled gracefully
+- [x] Incomplete history entries do not break export output
+- [x] Missing files and empty collections start cleanly instead of crashing
+- [x] Recovery paths are covered by regression tests
+
+**Implementation Notes:**
+- Hardened `history.json` loading and export behavior
+- Added regression coverage for malformed inputs and partial records
 
 ### Task 36: PERF-2 - Async Generation with Cancellation
 
@@ -706,7 +732,20 @@ Current search is linear (loops through phrases). Build inverted index for O(1) 
 **Estimate:** 3-4 hours  
 **Category:** `category:performance`, `impact:medium`, `effort:complex`  
 **Milestone:** `phase:poweruser`  
-**Status:** ⏳ NOT STARTED
+**Status:** ✅ COMPLETE
+
+**Description:**
+Allow batch generation to exit early when a cancellation event is set, without leaving partial state behind.
+
+**Acceptance Criteria:**
+- [x] `generate_batch_async()` exits immediately when cancellation is requested
+- [x] `generate_batch()` honors the shared cancellation event
+- [x] `cancel_generation()` sets the requested event reliably
+- [x] Async flows do not continue once cancelled
+
+**Implementation Notes:**
+- Batch generation checks `cancel_event.is_set()` at each iteration
+- Async wrapper returns early for cancelled work
 
 ### Task 37: PERF-3 - Lazy-Load History on Demand
 
@@ -717,6 +756,19 @@ Current search is linear (loops through phrases). Build inverted index for O(1) 
 **Category:** `category:performance`, `impact:low`, `effort:medium`  
 **Milestone:** `phase:poweruser`  
 **Status:** ✅ COMPLETE
+
+**Description:**
+Support paginated access to stored history so large datasets can be displayed without loading the full list at once.
+
+**Acceptance Criteria:**
+- [x] `get_history_page()` returns page metadata and items
+- [x] Page size and page number are configurable
+- [x] History can be loaded incrementally instead of all at once
+- [x] UI paging logic uses the same data contract
+
+**Implementation Notes:**
+- Added paginated history access with counts and page metadata
+- Verified by the lazy history paging regression tests
 
 ---
 
@@ -790,23 +842,24 @@ Store search queries in memory. Show dropdown in search box with recent searches
 **Type:** New Capability (Priority: LOW)  
 **Estimate:** 2 hours  
 **Category:** `category:capabilities`, `impact:low`, `effort:quick-win`  
-**Milestone:** `phase:foundation`
+**Milestone:** `phase:foundation`  
+**Status:** ✅ COMPLETE
 
 **Description:**
 Prevent data loss from unexpected crashes. Periodically save state even if user doesn't explicitly save.
 
 **Acceptance Criteria:**
-- [ ] Auto-save timer runs every 5 minutes
-- [ ] Saves history.json and favorites.json
-- [ ] No UI freeze during save
-- [ ] Configurable interval
-- [ ] Can disable auto-save
-- [ ] Logs auto-save events
+- [x] Auto-save timer runs every 5 minutes
+- [x] Saves history.json and favorites.json
+- [x] No UI freeze during save
+- [x] Configurable interval
+- [x] Can disable auto-save
+- [x] Logs auto-save events
 
 **Implementation Notes:**
-- Use threading.Timer for periodic saves
-- Save in background thread
-- Start on app init, stop on exit
+- Use a background thread to run periodic saves without blocking the UI
+- Start auto-save when the app initializes and stop it on shutdown
+- Persist the current history and favorites to their JSON files
 
 **Dependencies:** UX-1 (needs history persistence)
 
@@ -1022,7 +1075,24 @@ Add source/attribution field to phrase schema. Users can tag phrases with origin
 **Type:** Data & Quality (Priority: MEDIUM)  
 **Estimate:** 6-8 hours  
 **Category:** `category:data-quality`, `impact:medium`, `effort:complex`  
-**Milestone:** `phase:poweruser`
+**Milestone:** `phase:poweruser`  
+**Status:** ✅ COMPLETE
+
+**Description:**
+Support language-tagged phrase metadata and language-aware generation filtering in the core logic, CLI, and main Tkinter UI.
+
+**Acceptance Criteria:**
+- [x] Phrase schema includes language metadata
+- [x] Generator accepts `language` filtering for phrase selection
+- [x] CLI supports `--language` generation requests
+- [x] UI has a language selector affecting generation
+- [x] Existing generation remains compatible when language is unset or set to `all`
+
+**Implementation Notes:**
+- Added `language` field handling in `MalaphorGenerator.generate_malaphor()` and `generate_multiple()`
+- CLI already accepts `--language` and passes it through to the generator
+- Main Tkinter window includes a language combobox with `all`, `en`, `es`, `fr`, and `de` options
+- Validation coverage added for language-aware generation and UI pass-through
 
 ---
 

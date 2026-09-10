@@ -126,6 +126,35 @@ def test_generate_malaphor_respects_language_filter(sample_generator):
     assert result["language"] == "es"
 
 
+def test_generate_multiple_respects_language_filter(sample_generator):
+    sample_generator.proverbs = [
+        {"original": "A bird in the hand", "beginning": "A bird in the hand", "ending": "is worth two in the bush", "language": "en"},
+        {"original": "El tiempo es oro", "beginning": "El tiempo", "ending": "es oro", "language": "es"},
+        {"original": "La prisa mata", "beginning": "La prisa", "ending": "mata", "language": "es"},
+    ]
+
+    results = sample_generator.generate_multiple(count=10, language="es")
+
+    assert results
+    assert all(result["source1"] in {"El tiempo es oro", "La prisa mata"} for result in results)
+    assert all(result["source2"] in {"El tiempo es oro", "La prisa mata"} for result in results)
+
+
+def test_generate_batch_respects_language_filter(sample_generator):
+    sample_generator.proverbs = [
+        {"original": "A bird in the hand", "beginning": "A bird in the hand", "ending": "is worth two in the bush", "language": "en"},
+        {"original": "El tiempo es oro", "beginning": "El tiempo", "ending": "es oro", "language": "es"},
+        {"original": "La prisa mata", "beginning": "La prisa", "ending": "mata", "language": "es"},
+    ]
+
+    results = sample_generator.generate_batch(count=5, language="es")
+
+    assert len(results) == 5
+    assert all(result["language"] == "es" for result in results)
+    assert all(result["source1"] in {"El tiempo es oro", "La prisa mata"} for result in results)
+    assert all(result["source2"] in {"El tiempo es oro", "La prisa mata"} for result in results)
+
+
 @pytest.mark.asyncio
 async def test_add_new_proverb_stores_language_metadata(sample_generator):
     success = await sample_generator.add_new_proverb("Tiempo es oro", "es oro", language="es")
@@ -137,6 +166,31 @@ def test_search_returns_case_insensitive_matches(sample_generator):
     results = sample_generator.search("bird")
     assert len(results) == 1
     assert results[0]["original"] == "A bird in the hand"
+
+
+def test_search_reuses_cached_results_for_repeated_queries(sample_generator, monkeypatch):
+    sample_generator.proverbs = [{
+        "original": "Time is of the essence",
+        "beginning": "Time is",
+        "ending": "of the essence",
+    }]
+    sample_generator._build_search_index()
+
+    calls = []
+    original_lookup = sample_generator.search_index.lookup
+
+    def track_lookup(query):
+        calls.append(query)
+        return original_lookup(query)
+
+    monkeypatch.setattr(sample_generator.search_index, "lookup", track_lookup)
+    sample_generator.search.cache_clear()
+
+    first = sample_generator.search("essence")
+    second = sample_generator.search("essence")
+
+    assert first == second
+    assert calls == ["essence"]
 
 
 def test_search_supports_partial_match(sample_generator):
@@ -227,6 +281,21 @@ def test_history_loads_from_file_handles_malformed_json(sample_generator, tmp_pa
     assert sample_generator._load_history_from_file() == []
 
 
+def test_export_history_as_text_handles_incomplete_entries(sample_generator, tmp_path):
+    output_path = tmp_path / "history.txt"
+    sample_generator.history = [
+        {"malaphor": "Alpha malaphor", "source1": "Alpha", "source2": "Beta"},
+        {"malaphor": "Broken entry"},
+    ]
+
+    result = asyncio.run(sample_generator.export_history_as_text(str(output_path)))
+
+    assert result is True
+    content = output_path.read_text(encoding="utf-8")
+    assert "Alpha malaphor" in content
+    assert "Broken entry" not in content
+
+
 @pytest.mark.asyncio
 async def test_generate_batch_async_respects_cancellation(sample_generator):
     """Test async batch generation stops immediately when cancelled."""
@@ -256,6 +325,20 @@ def test_save_history_entry_persists_history(sample_generator, tmp_path, monkeyp
     data = json.loads(Path("history.json").read_text(encoding="utf-8"))
     assert data[-1]["malaphor"] == "Saved malaphor"
     assert "timestamp" in data[-1]
+
+
+def test_save_history_entry_preserves_language_metadata(sample_generator, tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    entry = {
+        "malaphor": "Tiempo es oro",
+        "source1": "El tiempo",
+        "source2": "es oro",
+        "language": "es",
+    }
+
+    assert sample_generator._save_history_entry(entry) is True
+    data = json.loads(Path("history.json").read_text(encoding="utf-8"))
+    assert data[-1]["language"] == "es"
 
 
 @pytest.mark.parametrize(
@@ -1096,6 +1179,23 @@ def test_search_uses_phrase_index_for_queries(sample_generator):
     assert len(matches) == 1
     assert matches[0]["original"] == "Time is of the essence"
     assert "essence" in sample_generator.search_index.query("essence")
+
+
+def test_benchmark_search_latency_reports_stats(sample_generator):
+    """Test repeated search queries produce latency statistics for performance checks."""
+    sample_generator.proverbs = [
+        {"original": f"Phrase {i} is worth testing", "beginning": f"Phrase {i}", "ending": "is worth testing"}
+        for i in range(1, 101)
+    ]
+    sample_generator._build_search_index()
+
+    stats = sample_generator.benchmark_search_latency("worth", iterations=25)
+
+    assert stats["query"] == "worth"
+    assert stats["iterations"] == 25
+    assert stats["average_seconds"] >= 0
+    assert stats["results_count"] >= 1
+    assert "min_seconds" in stats and "max_seconds" in stats
 
 
 def test_undo_redo_stack_tracks_state(sample_generator):

@@ -14,15 +14,18 @@ class DummyGenerator:
         self.import_path = None
         self.export_path = None
         self.export_text_path = None
+        self.last_language = None
 
-    def generate_malaphor(self):
+    def generate_malaphor(self, language=None):
+        self.last_language = language
         return {
             "malaphor": "Generated malaphor",
             "source1": "Source A",
             "source2": "Source B",
         }
 
-    def generate_multiple(self, count=5, exclude_pairs=None):
+    def generate_multiple(self, count=5, exclude_pairs=None, language=None):
+        self.last_language = language
         return [
             {
                 "malaphor": f"Generated {index}",
@@ -77,6 +80,14 @@ def test_cli_generate_prints_output(dummy_generator, capsys):
     output = capsys.readouterr().out
     assert "Generated 0" in output
     assert "Generated 1" in output
+
+
+def test_cli_generate_passes_language_to_generator(dummy_generator, capsys):
+    exit_code = malaphor_cli.main(["--generate", "--language", "es", "--output-format", "json"])
+
+    assert exit_code == 0
+    assert dummy_generator.last_language == "es"
+    assert "Generated malaphor" in capsys.readouterr().out
 
 
 def test_cli_search_outputs_json(dummy_generator, capsys):

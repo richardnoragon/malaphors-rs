@@ -14,6 +14,7 @@ Malaphor Generator is a Python desktop application for creating playful malaphor
 ## Features
 
 - Generate random malaphors by combining the beginning of one phrase with the end of another
+- Filter generation by language code, such as `en` or `es`, when a phrase set includes language metadata
 - Manually select source phrases for combination
 - Manage phrases, history, and favorites
 - Import and export phrase collections and logs
@@ -74,6 +75,7 @@ pytest
 ```bash
 python main.py --generate
 python main.py --generate --count 5 --smart
+python main.py --generate --language es --count 3
 python main.py --search bird
 python main.py --export malaphors-export.json --export-format json
 ```

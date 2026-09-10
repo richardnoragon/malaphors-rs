@@ -61,6 +61,24 @@ class TestMalaphorUI(unittest.TestCase):
         self.assertIn("Test malaphor", self.app.sentence_label.cget("text"))
 
     @patch('tkinter.messagebox.showinfo')
+    def test_generate_button_uses_selected_language(self, mock_showinfo):
+        """The selected language should be passed to the generator when creating a malaphor."""
+        self.app.language_var.set("es")
+
+        self.app.generate_malaphor()
+
+        self.app.generator.generate_malaphor.assert_called_once_with(language="es")
+
+    def test_main_window_exposes_quick_win_actions(self):
+        """Quick-win actions should be visible in the main window for users to access."""
+        self.assertTrue(hasattr(self.app, "copy_stats_button"))
+        self.assertTrue(hasattr(self.app, "recent_searches_button"))
+        self.assertIsNotNone(self.app.copy_stats_button)
+        self.assertIsNotNone(self.app.recent_searches_button)
+        self.assertIn("copy_generation_stats", self.app.copy_stats_button.cget("command"))
+        self.assertIn("show_recent_searches", self.app.recent_searches_button.cget("command"))
+
+    @patch('tkinter.messagebox.showinfo')
     def test_copy_to_clipboard(self, mock_showinfo):
         """Test the copy to clipboard functionality."""
         test_text = "Test malaphor to copy"
@@ -86,6 +104,21 @@ class TestMalaphorUI(unittest.TestCase):
         # Verify addition
         self.app.generator.add_to_favorites.assert_called_once_with(test_text)
         mock_showinfo.assert_called_once()
+
+    @patch.object(MalaphorGenerator, 'start_auto_save')
+    @patch.object(MalaphorGenerator, 'stop_auto_save')
+    def test_app_auto_save_lifecycle(self, mock_stop_auto_save, mock_start_auto_save):
+        """Test the app starts and stops periodic auto-save during its lifecycle."""
+        root = tk.Tk()
+        root.withdraw()
+        try:
+            app = MalaphorApp(root=root)
+            mock_start_auto_save.assert_called_once_with(interval_seconds=300.0)
+
+            app.close()
+            mock_stop_auto_save.assert_called_once()
+        finally:
+            root.destroy()
 
     def test_history_update(self):
         """Test history display update."""

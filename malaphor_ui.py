@@ -27,6 +27,7 @@ class MalaphorApp:
         self.dialogs = {}  # Cache dialog references
         self.style = ttk.Style(self.root)
         self.theme_mode = self._load_ui_preferences().get("theme", "light")
+        self.generator.start_auto_save(interval_seconds=300.0)
         self.setup_gui()
         self.update_history()
         self._apply_theme(self.root)
@@ -36,6 +37,8 @@ class MalaphorApp:
         # Configure window
         self.root.geometry("600x500")
         self.root.configure(padx=20, pady=20)
+
+        self.language_var = tk.StringVar(value="all")
 
         # Create main frame
         main_frame = tk.Frame(self.root)
@@ -96,6 +99,18 @@ class MalaphorApp:
         )
         copy_button.pack(side=tk.LEFT, padx=5)
         self._create_tooltip(copy_button, "Copy the current malaphor to clipboard")
+
+        language_label = tk.Label(button_frame_top, text="Language:")
+        language_label.pack(side=tk.LEFT, padx=(12, 4))
+        self._create_tooltip(language_label, "Limit generation to a specific language when available")
+        language_combo = ttk.Combobox(
+            button_frame_top,
+            textvariable=self.language_var,
+            values=["all", "en", "es", "fr", "de"],
+            state="readonly",
+            width=10,
+        )
+        language_combo.pack(side=tk.LEFT, padx=5)
 
         # Add import/export buttons to middle row
         import_button = tk.Button(
@@ -170,6 +185,24 @@ class MalaphorApp:
         )
         export_image_button.pack(side=tk.LEFT, padx=5)
         self._create_tooltip(export_image_button, "Export the current malaphor as PNG or SVG")
+
+        self.copy_stats_button = tk.Button(
+            button_frame_bottom,
+            text="Copy Stats",
+            command=self.copy_generation_stats,
+            width=15,
+        )
+        self.copy_stats_button.pack(side=tk.LEFT, padx=5)
+        self._create_tooltip(self.copy_stats_button, "Copy the current malaphor with its source metadata in a formatted output")
+
+        self.recent_searches_button = tk.Button(
+            button_frame_bottom,
+            text="Recent Searches",
+            command=self.show_recent_searches,
+            width=15,
+        )
+        self.recent_searches_button.pack(side=tk.LEFT, padx=5)
+        self._create_tooltip(self.recent_searches_button, "Review and rerun recent search queries")
 
         exit_button = tk.Button(
             button_frame_bottom,
@@ -911,7 +944,9 @@ class MalaphorApp:
 
     def generate_malaphor(self):
         """Generate and display a new malaphor."""
-        result = self.generator.generate_malaphor()
+        selected_language = self.language_var.get().strip().lower()
+        language = None if selected_language in {"", "all", "any"} else selected_language
+        result = self.generator.generate_malaphor(language=language)
         sentence = result["malaphor"]
         self.sentence_label.config(
             text=(f"{sentence}\n\n"
@@ -1878,6 +1913,10 @@ class MalaphorApp:
 
     def close(self):
         """Clean up resources."""
+        try:
+            self.generator.stop_auto_save()
+        except Exception:
+            pass
         self._cleanup_tooltips()
         for dialog in self.dialogs.values():
             try:
