@@ -2,8 +2,8 @@
 # Speckit Extensions Configuration
 # This file defines hooks and extensions for the speckit framework
 
-version: "1.0"
-speckit_version: "2.0.0"  # Latest speckit framework version
+version: "1.0.0"
+speckit_version: "2.0.0"
 
 hooks:
   before_specify:
@@ -45,17 +45,17 @@ hooks:
 extensions:
   - name: "git-integration"
     enabled: true
-    version: "1.0"
+    version: "1.0.0"
     description: "Git workflow integration for speckit"
   
   - name: "testing-framework"
     enabled: true
-    version: "1.0"
+    version: "1.0.0"
     description: "Testing framework integration"
   
   - name: "documentation-generator"
     enabled: true
-    version: "1.0"
+    version: "1.0.0"
     description: "Auto-generate documentation from specs"
 
 preferences:

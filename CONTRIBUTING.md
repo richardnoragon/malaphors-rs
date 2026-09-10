@@ -18,3 +18,5 @@ Contributions are welcome.
 
 - Keep the documentation in sync with any user-facing changes.
 - Avoid committing local build artifacts or generated data files.
+- Follow the canonical [versioning policy](VERSIONING.md) and update
+  [CHANGELOG.md](CHANGELOG.md) when changes affect users or developers.

@@ -1,3 +1,4 @@
+import json
 import unittest
 import pytest
 from unittest.mock import MagicMock, patch
@@ -6,6 +7,7 @@ import tkinter as tk
 from PyQt6 import QtWidgets
 from PyQt6.QtTest import QTest
 from malaphor_ui import MalaphorApp
+from malaphor_logic import MalaphorGenerator
 
 @pytest.mark.gui
 class TestMalaphorUI(unittest.TestCase):
@@ -59,6 +61,24 @@ class TestMalaphorUI(unittest.TestCase):
         self.assertIn("Test malaphor", self.app.sentence_label.cget("text"))
 
     @patch('tkinter.messagebox.showinfo')
+    def test_generate_button_uses_selected_language(self, mock_showinfo):
+        """The selected language should be passed to the generator when creating a malaphor."""
+        self.app.language_var.set("es")
+
+        self.app.generate_malaphor()
+
+        self.app.generator.generate_malaphor.assert_called_once_with(language="es")
+
+    def test_main_window_exposes_quick_win_actions(self):
+        """Quick-win actions should be visible in the main window for users to access."""
+        self.assertTrue(hasattr(self.app, "copy_stats_button"))
+        self.assertTrue(hasattr(self.app, "recent_searches_button"))
+        self.assertIsNotNone(self.app.copy_stats_button)
+        self.assertIsNotNone(self.app.recent_searches_button)
+        self.assertIn("copy_generation_stats", self.app.copy_stats_button.cget("command"))
+        self.assertIn("show_recent_searches", self.app.recent_searches_button.cget("command"))
+
+    @patch('tkinter.messagebox.showinfo')
     def test_copy_to_clipboard(self, mock_showinfo):
         """Test the copy to clipboard functionality."""
         test_text = "Test malaphor to copy"
@@ -84,6 +104,21 @@ class TestMalaphorUI(unittest.TestCase):
         # Verify addition
         self.app.generator.add_to_favorites.assert_called_once_with(test_text)
         mock_showinfo.assert_called_once()
+
+    @patch.object(MalaphorGenerator, 'start_auto_save')
+    @patch.object(MalaphorGenerator, 'stop_auto_save')
+    def test_app_auto_save_lifecycle(self, mock_stop_auto_save, mock_start_auto_save):
+        """Test the app starts and stops periodic auto-save during its lifecycle."""
+        root = tk.Tk()
+        root.withdraw()
+        try:
+            app = MalaphorApp(root=root)
+            mock_start_auto_save.assert_called_once_with(interval_seconds=300.0)
+
+            app.close()
+            mock_stop_auto_save.assert_called_once()
+        finally:
+            root.destroy()
 
     def test_history_update(self):
         """Test history display update."""
@@ -169,6 +204,41 @@ class TestMalaphorUI(unittest.TestCase):
         # Verify dialogs were shown
         self.assertGreater(mock_filedialog.asksaveasfilename.call_count, 0)
         mock_filedialog.askopenfilename.assert_called_once()
+
+
+def test_history_persists_and_loads(monkeypatch, tmp_path):
+    """History entries should be saved to disk and restored on startup."""
+    monkeypatch.chdir(tmp_path)
+    malaphors = {
+        "proverbs": [
+            {"original": "A bird in the hand", "beginning": "A bird in the hand", "ending": "is worth two in the bush"},
+            {"original": "Too many cooks spoil the broth", "beginning": "Too many cooks", "ending": "spoil the broth"},
+        ]
+    }
+    (tmp_path / "malaphors.json").write_text(json.dumps(malaphors), encoding="utf-8")
+
+    generator = MalaphorGenerator()
+    result = generator.generate_malaphor()
+
+    history_file = tmp_path / "history.json"
+    assert history_file.exists()
+    saved_history = json.loads(history_file.read_text(encoding="utf-8"))
+    assert isinstance(saved_history, list)
+    assert saved_history[-1]["malaphor"] == result["malaphor"]
+    assert "timestamp" in saved_history[-1]
+
+    saved_history = [
+        {
+            "malaphor": "Persisted malaphor",
+            "source1": "Source one",
+            "source2": "Source two",
+            "timestamp": "2026-09-08T00:00:00+00:00",
+        }
+    ]
+    history_file.write_text(json.dumps(saved_history), encoding="utf-8")
+
+    reloaded = MalaphorGenerator()
+    assert reloaded.history == saved_history
 
 if __name__ == '__main__':
     print("Running MalaphorUI tests...")
